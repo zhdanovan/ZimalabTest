@@ -1,6 +1,7 @@
 <?php
-require_once 'config.php';
-require_once 'Account.php';
+require_once 'config/path.php';
+require_once ROOT_PATH . '/config/config.php';
+require_once ROOT_PATH . '/classes/Account.php';
 
 $items_per_page = 10;
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
@@ -20,7 +21,7 @@ $accounts = Account::getAccounts($offset, $items_per_page);
 <body>
     <div class="container">
         <h1>Список аккаунтов</h1>
-        <a href="add_account.php">Добавить аккаунт</a>
+        <a href="actions/add_account.php">Добавить аккаунт</a>
         <table>
             <thead>
                 <tr>
@@ -49,15 +50,14 @@ $accounts = Account::getAccounts($offset, $items_per_page);
                         <td><?= $account['phone2'] ?></td>
                         <td><?= $account['phone3'] ?></td>
                         <td>
-                            <a href="edit_account.php?id=<?= $account['id'] ?>">Edit</a> |
-                            <a href="delete_account.php?id=<?= $account['id'] ?>">Delete</a>
+                            <a href="actions/edit_account.php?id=<?= $account['id'] ?>">Edit</a> |
+                            <a href="actions/delete_account.php?id=<?= $account['id'] ?>">Delete</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
         <?php
-        // Generate pagination links
         $total_accounts = $conn->query('SELECT COUNT(*) FROM accounts')->fetchColumn();
         $total_pages = ceil($total_accounts / $items_per_page);
         if ($total_pages > 1) {
