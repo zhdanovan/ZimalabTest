@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css">
     <title>Добавить аккаунт</title>
 </head>
 
@@ -67,8 +67,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <label for="phone3">Phone 3:</label>
             <input type="text" id="phone3" name="phone3">
-
             <input type="submit" value="Добавить аккаунт">
+            <button type="button" onclick="window.history.back()">Отмена</button>
         </form>
     </div>
 </body>

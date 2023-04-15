@@ -71,6 +71,7 @@ if (!$account) {
             <input type="text" name="phone3" id="phone3" value="<?= $account['phone3'] ?>">
             <br>
             <button type="submit" name="submit">Сохранить изменения</button>
+            <button type="button" onclick="window.history.back()">Отмена</button>
         </form>
     </div>
 </body>

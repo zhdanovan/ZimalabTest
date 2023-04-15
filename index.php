@@ -21,7 +21,7 @@ $accounts = Account::getAccounts($offset, $items_per_page);
 <body>
     <div class="container">
         <h1>Список аккаунтов</h1>
-        <a href="actions/add_account.php">Добавить аккаунт</a>
+        <a href="actions/add_account.php" class="add-account">Добавить аккаунт</a>
         <table>
             <thead>
                 <tr>
