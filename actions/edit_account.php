@@ -21,8 +21,7 @@ if (isset($_POST['submit'])) {
 
     $account = new Account($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
     $account->editAccount($id);
-
-    header("Location: index.php");
+    header('Location: ' . BASE_URL . '/index.php');
     exit;
 }
 
@@ -40,7 +39,7 @@ if (!$account) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css">
     <title>Редактировать аккаунт</title>
 </head>
 <body>

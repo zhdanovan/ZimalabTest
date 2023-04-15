@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } else {
         $account = new Account($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
         $account->addAccount();
-        header('Location: index.php');
+        header('Location: ' . BASE_URL . '/index.php');
         exit();
     }
 }
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php echo $error; ?>
             </p>
         <?php endif; ?>
-        <form action="add_account.php" method="post" class="form-container">
+        <form action="" method="post" class="form-container">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" required>
 
@@ -69,9 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" id="phone3" name="phone3">
 
             <input type="submit" value="Добавить аккаунт">
-            <a href="/index.php">Вернуться к списку аккаунтов</a>
         </form>
     </div>
 </body>
-
 </html>

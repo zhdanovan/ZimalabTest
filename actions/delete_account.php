@@ -1,5 +1,5 @@
 <?php
-require_once ROOT_PATH . '/config/path.php';
+require_once '../config/path.php';
 require_once ROOT_PATH . '/config/config.php';
 require_once '../classes/Account.php';
 
@@ -12,6 +12,6 @@ if (!$id) {
 $account = new Account("", "", "");
 $account->deleteAccount($id);
 
-header("Location: index.php");
+header('Location: ' . BASE_URL . '/index.php');
 exit;
 ?>
