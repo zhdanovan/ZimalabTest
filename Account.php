@@ -68,6 +68,12 @@ class Account {
     
     public static function getAccounts($offset, $items_per_page) {
         global $conn;
+    
+        // Проверяем $offset
+        if ($offset < 0) {
+            $offset = 0;
+        }
+    
         $sql = "SELECT * FROM accounts LIMIT ?, ?";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $offset, PDO::PARAM_INT);
@@ -77,5 +83,4 @@ class Account {
         return $result;
     }
     
-    }
-?>
+}

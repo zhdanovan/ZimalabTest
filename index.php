@@ -56,6 +56,28 @@ $accounts = Account::getAccounts($offset, $items_per_page);
                 <?php endforeach; ?>
             </tbody>
         </table>
+        <?php
+        // Generate pagination links
+        $total_accounts = $conn->query('SELECT COUNT(*) FROM accounts')->fetchColumn();
+        $total_pages = ceil($total_accounts / $items_per_page);
+        if ($total_pages > 1) {
+            echo '<div class="pagination">';
+            if ($page > 1) {
+                echo '<a href="?page='.($page - 1).'">Prev</a>';
+            }
+            for ($i = 1; $i <= $total_pages; $i++) {
+                if ($i === $page) {
+                    echo '<span class="current">'.$i.'</span>';
+                } else {
+                    echo '<a href="?page='.$i.'">'.$i.'</a>';
+                }
+            }
+            if ($page < $total_pages) {
+                echo '<a href="?page='.($page + 1).'">Next</a>';
+            }
+            echo '</div>';
+        }
+        ?>
     </div>
 </body>
 </html>
