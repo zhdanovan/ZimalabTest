@@ -72,7 +72,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="phone3">Phone 3:</label>
             <input type="text" id="phone3" name="phone3">
             <input type="submit" value="Добавить аккаунт">
-            <button type="button" onclick="window.history.back()">Отмена</button>
+            <button type="button" class="cancelbtn" onclick="window.history.back()">Отмена</button>
         </form>
     </div>
 </body>

@@ -28,10 +28,9 @@ body {
 
 .reset-search {
     display: inline-block;
-    border: 1px solid #121212;
     text-decoration: none;
     color: #fff;
-    background-color: #000000;
+    background-color: #b41212;
     cursor: pointer;
     transition: background-color 0.2s;
     width: 100%;
@@ -42,35 +41,60 @@ body {
 }
 
 .reset-search:hover {
-    background-color: #444444;;
+    background-color: #9a3434;;
 }
 
+.cancelbtn{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: #b41212;
+    cursor: pointer;
+    width: 100%;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+}
+
+.savebtn{
+   width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;  
+}
 
 table {
     border-collapse: collapse;
     width: 100%;
-}
-
-table, th, td {
-    border: 1px solid black;
-}
-
-th, td {
-    padding: 15px;
+  }
+  
+  th, td {
     text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
+    padding: 8px;
+  }
+  
+  th {
+    background-color: #222;
+    color: white;
+  }
+  
+  td {
     background-color: #ddd;
-}
+  }
+  
+  tr:nth-child(even) td {
+    background-color: #ccc;
+  }
+  
+  tr:hover td {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
 
 .pagination {
     display: flex;
