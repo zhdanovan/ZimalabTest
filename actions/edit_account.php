@@ -1,8 +1,10 @@
 <?php
+// Подключаем файлы конфигурации и класс Account
 require_once '../config/path.php';
 require_once ROOT_PATH . '/config/config.php';
 require_once '../classes/Account.php';
 
+// Получаем ID аккаунта из запроса
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if (!$id) {
@@ -10,6 +12,7 @@ if (!$id) {
 }
 
 if (isset($_POST['submit'])) {
+    // Получаем данные из формы
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
     $email = $_POST['email'];
@@ -19,8 +22,11 @@ if (isset($_POST['submit'])) {
     $phone2 = $_POST['phone2'];
     $phone3 = $_POST['phone3'];
 
+    // Создаем новый объект аккаунта с полученными данными
     $account = new Account($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
+    // Редактируем аккаунт
     $account->editAccount($id);
+    // Перенаправляем на главную страницу
     header('Location: ' . BASE_URL . '/index.php');
     exit;
 }
@@ -36,16 +42,19 @@ if (!$account) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css">
     <title>Редактировать аккаунт</title>
 </head>
+
 <body>
     <div class="container">
         <h1>Редактировать аккаунт</h1>
         <form action="" method="post">
+            <!-- Выводим поля формы с предзаполненными данными аккаунта -->
             <label for="first_name">First Name:</label>
             <input type="text" name="first_name" id="first_name" value="<?= $account['first_name'] ?>" required>
             <br>
@@ -75,4 +84,5 @@ if (!$account) {
         </form>
     </div>
 </body>
+
 </html>

@@ -1,9 +1,12 @@
 <?php
+// Подключение файлов настроек и конфигурации
 require_once __DIR__ . '/../config/path.php';
 require_once ROOT_PATH . '/config/config.php';
 
-
-class Account {
+// Определение класса Account
+class Account
+{
+    // Объявление свойств класса
     private $id;
     private $first_name;
     private $last_name;
@@ -15,7 +18,8 @@ class Account {
     private $phone3;
 
     // Конструктор
-    public function __construct($first_name, $last_name, $email, $company_name = "", $position = "", $phone1 = "", $phone2 = "", $phone3 = "") {
+    public function __construct($first_name, $last_name, $email, $company_name = "", $position = "", $phone1 = "", $phone2 = "", $phone3 = "")
+    {
         $this->first_name = $first_name;
         $this->last_name = $last_name;
         $this->email = $email;
@@ -26,8 +30,9 @@ class Account {
         $this->phone3 = $phone3;
     }
 
-    // Методы для добавления, редактирования, удаления и получения списка аккаунтов
-    public function addAccount() {
+    // Метод обновления аккаунта
+    public function addAccount()
+    {
         global $conn;
         $sql = "INSERT INTO accounts (first_name, last_name, email, company_name, position, phone1, phone2, phone3) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conn->prepare($sql);
@@ -40,10 +45,11 @@ class Account {
         $stmt->bindParam(7, $this->phone2);
         $stmt->bindParam(8, $this->phone3);
         $stmt->execute();
-        
-    }
 
-    public function editAccount($id) {
+    }
+    // Метод редактирования аккаунта
+    public function editAccount($id)
+    {
         global $conn;
         $sql = "UPDATE accounts SET first_name=?, last_name=?, email=?, company_name=?, position=?, phone1=?, phone2=?, phone3=? WHERE id=?";
         $stmt = $conn->prepare($sql);
@@ -57,25 +63,29 @@ class Account {
         $stmt->bindParam(8, $this->phone3);
         $stmt->bindParam(9, $id);
         $stmt->execute();
-        
+
     }
 
-    public function deleteAccount($id) {
+    // Метод удаления аккаунта
+    public function deleteAccount($id)
+    {
         global $conn;
         $sql = "DELETE FROM accounts WHERE id=?";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $id);
         $stmt->execute();
     }
-    
-    public static function getAccounts($offset, $items_per_page) {
+
+    // Метод получения списка аккаунтов 
+    public static function getAccounts($offset, $items_per_page)
+    {
         global $conn;
-    
+
         // Проверяем $offset
         if ($offset < 0) {
             $offset = 0;
         }
-    
+
         $sql = "SELECT * FROM accounts LIMIT ?, ?";
         $stmt = $conn->prepare($sql);
         $stmt->bindParam(1, $offset, PDO::PARAM_INT);
@@ -84,5 +94,5 @@ class Account {
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    
+
 }
