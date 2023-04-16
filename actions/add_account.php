@@ -1,10 +1,12 @@
 <?php
+// Подключение файлов настроек и конфигурации
 require_once '../config/path.php';
 require_once ROOT_PATH . '/config/config.php';
 require_once '../classes/Account.php';
 
 $error = '';
 
+// Обработка отправленной формы
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $first_name = $_POST['first_name'];
     $last_name = $_POST['last_name'];
@@ -15,11 +17,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $phone2 = $_POST['phone2'];
     $phone3 = $_POST['phone3'];
 
+    // Валидация данных
     if (empty($first_name) || empty($last_name) || empty($email)) {
         $error = 'First name, last name и email являются обязательными полями.';
     } else {
+        // Создание аккаунта и добавление его в базу данных
         $account = new Account($first_name, $last_name, $email, $company_name, $position, $phone1, $phone2, $phone3);
         $account->addAccount();
+        // Перенаправление на главную страницу после успешного добавления аккаунта
         header('Location: ' . BASE_URL . '/index.php');
         exit();
     }
@@ -27,14 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/style.css">
     <title>Добавить аккаунт</title>
 </head>
-
 <body>
     <div class="container">
         <h1>Добавить аккаунт</h1>
@@ -43,6 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php echo $error; ?>
             </p>
         <?php endif; ?>
+        <!-- Форма добавления аккаунта -->
         <form action="" method="post" class="form-container">
             <label for="first_name">First Name:</label>
             <input type="text" id="first_name" name="first_name" required>
