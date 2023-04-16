@@ -106,9 +106,8 @@ if (!empty($search_param) && !empty($search_value)) {
                         </td>
                         <!-- Ссылки на действия с аккаунтом (редактирование и удаление) -->
                         <td>
-                            <a href="actions/edit_account.php?id=<?= $account['id'] ?>">Редактировать</a> |
-                            <a href="actions/delete_account.php?id=<?= $account['id'] ?>" onclick="return confirm('Вы уверены, что хотите удалить этот аккаунт?')">Удалить</a>
-
+                            <a href="actions/edit_account.php?id=<?= $account['id'] ?>" class="edit-btn">Редактировать</a>
+                            <a href="actions/delete_account.php?id=<?= $account['id'] ?>" class="delete-btn" onclick="return confirm('Вы уверены, что хотите удалить этот аккаунт?')">Удалить</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
