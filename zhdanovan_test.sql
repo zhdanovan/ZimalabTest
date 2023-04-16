@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 15 2023 г., 12:45
+-- Время создания: Апр 16 2023 г., 11:29
 -- Версия сервера: 8.0.30
 -- Версия PHP: 7.2.34
 
@@ -44,17 +44,26 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `first_name`, `last_name`, `email`, `company_name`, `position`, `phone1`, `phone2`, `phone3`) VALUES
-(35, 'Артемий', 'Жданов', 'artemcka@gmail.com', 'Yandex', 'Manager', '+79137990640', '', ''),
 (36, 'авпавп', 'апвпавп', 'artemcka@gmail.com', 'nobody', 'nobody', '12345', '', ''),
 (37, 'kjhk', 'jhkhjk', 'artemcka@gmail.com', 'Google', 'nobody', '+79137990640', '', ''),
-(38, 'пророр', 'прорпо', 'artemcka@gmail.com', 'джлж', 'dfsf', '+79137990640', '', ''),
-(39, 'sdfsdf', 'dsfdsf', '11@yandex.ru', 'dsfdsf', 'sdfdsf', '3432432', '', ''),
 (40, 'sdsdadf', 'gfdgfdg', 'artemcka@gmail.com', 'Google', 'sdffds', '+79137990640', '', ''),
 (41, 'sdfdsfcxvxcvv', 'dfsfsdfjfhgjhg', 'artemcka@gmail.com', 'Yandex', 'sdfsdfdsf', '+79137990640', '', ''),
 (42, 'sdsd', 'sdsd', 'sddsd@gmail.com', 'Google', 'dsffsdf', '+79137990640', '', ''),
 (43, 'fdsfsdf', 'sdfsdfds', 'artemcka@gmail.com', 'Yandex', 'dsfsdfs', '+79137990640', '', ''),
 (44, 'sdfsdf', 'dsfdsfds', '11@yandex.ru', 'nobody', 'sdfdsf', '12345', '', ''),
-(45, 'sdfdsfsd', 'dsfdsfsd', '11@yandex.ru', 'nobody', 'sdfsdf', '12345', '', '');
+(45, 'sdfdsfsd', 'dsfdsfsd', '11@yandex.ru', 'nobody', 'sdfsdf', '12345', '', ''),
+(46, 'Артемий', 'dsfds', 'artemcka@gmail.com', 'nobody', '', '12345', '', ''),
+(47, 'авпавп', 'dsfds', 'artemcka@gmail.com', 'nobody', '', '12345', '', ''),
+(48, 'Артемий', 'Жданов', 'artemcka@gmail.com', 'Yandex', '', '+79137990640', '', ''),
+(49, 'авпавп', 'dsfds', 'artemcka@gmail.com', 'nobody', '', '12345', '', ''),
+(50, 'fdsfd', 'dsfdsf', 'artemcka@gmail.com', 'nobody', '', '12345', '', ''),
+(51, 'err', 'errr', 'err@gmail.com', 'nobody', '', '12345', '', ''),
+(52, 'err', 'errr', 'err@gmail.com', 'nobody', '', '12345', '', ''),
+(53, 'err1', 'errr', 'err@gmail.com', 'nobody', '', '12345', '', ''),
+(54, 'err1', 'errr', 'err@gmail.com', 'nobody', '', '12345', '', ''),
+(57, 'valera', 'meladze', 'err@gmail.com', 'nobody', '', '12345', '', ''),
+(59, 'test5', 'testov', 'testov@gmail.com', 'testcore', '', '', '', ''),
+(60, 'err3', 'errr', 'err@gmail.com', 'nobody', '', '12345', '', '');
 
 --
 -- Индексы сохранённых таблиц
@@ -74,7 +83,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT для таблицы `accounts`
 --
 ALTER TABLE `accounts`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
