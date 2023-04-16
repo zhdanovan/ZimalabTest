@@ -95,4 +95,26 @@ class Account
         return $result;
     }
 
+    public static function searchAccounts($search_param, $search_value)
+    {
+        global $conn;
+
+        // Массив допустимых параметров для поиска
+        $allowed_params = array('id', 'first_name', 'last_name', 'email', 'company_name', 'position', 'phone1', 'phone2', 'phone3');
+
+        // Проверка корректности имени параметра
+        if (!in_array($search_param, $allowed_params)) {
+            throw new InvalidArgumentException('Invalid search parameter: ' . $search_param);
+        }
+
+        $sql = "SELECT * FROM accounts WHERE " . $search_param . " LIKE ?";
+        $stmt = $conn->prepare($sql);
+        $search_value = "%" . $search_value . "%";
+        $stmt->bindParam(1, $search_value);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
+
+
 }

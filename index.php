@@ -11,8 +11,18 @@ $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 
 $offset = ($page - 1) * $items_per_page;
 
-// Получение списка аккаунтов с заданным смещением и количеством элементов на странице
-$accounts = Account::getAccounts($offset, $items_per_page);
+// Обработка формы поиска
+$search_param = isset($_GET['search_param']) ? $_GET['search_param'] : '';
+$search_value = isset($_GET['search_value']) ? $_GET['search_value'] : '';
+
+if (!empty($search_param) && !empty($search_value)) {
+    $accounts = Account::searchAccounts($search_param, $search_value);
+    $search_results = true;
+} else {
+    // Получение списка аккаунтов с заданным смещением и количеством элементов на странице
+    $accounts = Account::getAccounts($offset, $items_per_page);
+    $search_results = false;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,6 +39,25 @@ $accounts = Account::getAccounts($offset, $items_per_page);
         <!-- Заголовок и ссылка для добавления аккаунта -->
         <h1>Список аккаунтов</h1>
         <a href="actions/add_account.php" class="add-account">Добавить аккаунт</a>
+        <!-- Форма поиска -->
+        <form action="" method="GET" class="search-form">
+            <label for="search_param">Параметр поиска:</label>
+            <select name="search_param" id="search_param">
+                <option value="first_name">First Name</option>
+                <option value="last_name">Last Name</option>
+                <option value="email">Email</option>
+                <option value="company_name">Company Name</option>
+                <option value="position">Position</option>
+                <option value="phone1">Phone 1</option>
+                <option value="phone2">Phone 2</option>
+                <option value="phone3">Phone 3</option>
+            </select>
+            <label for="search_value">Значение:</label>
+            <input type="text" name="search_value" id="search_value" value="<?= htmlspecialchars($search_value) ?>"
+                required>
+            <input type="submit" value="Поиск">
+            <button type="button" class="reset-search" onclick="location.href='index.php';">Сбросить поиск</button>
+        </form>
         <!-- Таблица для отображения списка аккаунтов -->
         <table>
             <thead>
